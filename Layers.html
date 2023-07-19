@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>逐层向下排列内容示例</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+    }
+    .container {
+      max-width: 100%;
+      overflow: hidden;
+      transition: height 0.5s;
+    }
+    .layer {
+      width: 100%;
+      height: auto; /* 设置每层的高度，根据需要调整 */
+      background-color: #ccc;
+      opacity: 0;
+      margin: 0px;
+      transition: opacity 0.5s;
+    }
+    p {
+  margin: 0;
+}
+img {
+      width: 100%;
+      height: auto; /* 设置图片宽度为 100%，高度自适应 */
+    }
+  </style>
+</head>
+<body>
+    <h1>欢迎来到逐层向下排列内容示例</h1>
+    <p>这是一个简单的HTML页面，内容会逐层向下排列。</p>
+  <div class="container" id="container">
+    <div class="layer layer1">
+        <img id="long-image" src="IMG/1.jpg" alt="Long Image">
+
+    </div>
+    <div class="layer layer2">
+        <img id="long-image" src="IMG/2.jpg" alt="Long Image" >
+    </div>
+    <div class="layer layer3">
+        <img id="long-image" src="IMG/3.jpg" alt="Long Image" >
+    </div>
+    <div class="layer layer4">
+        <img id="long-image" src="IMG/4.jpg" alt="Long Image" >
+    </div>
+    <div class="layer layer5">
+        <img id="long-image" src="IMG/5.jpg" alt="Long Image" >
+    </div>
+    <div class="layer layer6">
+        <img id="long-image" src="IMG/6.jpg" alt="Long Image" >
+    </div>
+    <div class="layer layer7">
+        <img id="long-image" src="IMG/7.jpg" alt="Long Image" >
+    </div>
+    <div class="layer layer_5">
+        <img id="long-image" src="https://via.placeholder.com/800" alt="Long Image" style="display: none;">
+        <p>Layer5</p>
+        <img id="long-image" src="https://via.placeholder.com/800" alt="Long Image" style="display: none;">
+    </div>
+
+  </div>
+
+  
+
+  <script>
+    // 等待页面加载完成
+    window.addEventListener('load', function() {
+      // 获取所有层级元素
+      const layers = document.querySelectorAll('.layer');
+      const container = document.getElementById('container');
+
+      // 循环处理每个层级元素
+      layers.forEach((layer, index) => {
+        // 使用setTimeout函数来延迟展现每一层
+        setTimeout(() => {
+          layer.style.opacity = 1;
+        }, (index + 1) * 500); // 设置每层延迟展现的时间间隔，这里是500毫秒，您可以根据需要调整
+        
+        // if(index == layers.length -1) {
+        //     setTimeout(() => {
+        //                // 显示最后的长图
+        //         const longImage = document.getElementById('long-image');
+        //         longImage.style.display = 'block';
+        //         }, (index + 1) * 500);
+        // }
+      });
+
+    });
+  </script>
+</body>
+</html>
+
+
+
+
+
+

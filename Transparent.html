@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>可移动层和点击区域示例</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+    #container {
+      position: relative;
+      height: 100vh;
+      max-width: 640px; 
+    }
+    #movableLayer {
+      position: absolute;
+      top: 50px;
+      left: 50px;
+      cursor: move;
+    }
+    #fixedLayer {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+    #clickArea {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      cursor: pointer;
+      padding: 10px;
+      background-color: #007bff;
+      color: #fff;
+    }
+     /* 在手机上使用媒体查询适配屏幕宽度 */
+     @media screen and (max-width: 480px) {
+      .container {
+        max-width: 100%; /* 在手机上显示屏幕宽度的 100% */
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="fixedLayer">
+      <img src="IMG/trans_back.png" alt="固定图片">
+    </div>
+    <div id="movableLayer">
+      <img src="IMG/trans.png" alt="可移动图片">
+    </div>
+
+    <div id="clickArea">点击这里显示新的长图</div>
+  </div>
+
+  <script>
+    // 获取相关元素
+    const movableLayer = document.getElementById('movableLayer');
+    const clickArea = document.getElementById('clickArea');
+
+    // 设置移动功能
+    let isDragging = false;
+    let offsetX, offsetY;
+
+    movableLayer.addEventListener('mousedown', (e) => {
+      isDragging = true;
+      offsetX = e.clientX - movableLayer.offsetLeft;
+      offsetY = e.clientY - movableLayer.offsetTop;
+    });
+
+    document.addEventListener('mousemove', (e) => {
+      if (isDragging) {
+        movableLayer.style.left = (e.clientX - offsetX) + 'px';
+        movableLayer.style.top = (e.clientY - offsetY) + 'px';
+      }
+    });
+
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
+
+    // 设置点击区域的功能
+    clickArea.addEventListener('click', () => {
+      // 在这里添加显示新的长图的逻辑
+      // 您可以动态改变页面内容，显示新的图片或隐藏不需要的元素
+      // 例如，您可以在 container 元素内添加一个新的图片元素来显示新的长图
+    });
+  </script>
+</body>
+</html>
